@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMPN 4 Darangdan - Kab. Purwakarta</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            800: '#1e3a8a', /* Biru Khas SMP */
+                            900: '#1e293b',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.80);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- NAVBAR STICKY -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-slate-200/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Sekolah -->
+                <a href="#hero" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-800 to-brand-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform">
+                        <i data-lucide="school" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg text-slate-900 leading-none block">SMPN 4 DARANGDAN</span>
+                        <span class="text-xs text-brand-800 font-medium tracking-wider">KAB. PURWAKARTA</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu Navigasi (AKTIF) -->
+                <div class="hidden lg:flex items-center gap-7 text-sm font-medium">
+                    <a href="#hero" class="text-slate-700 hover:text-brand-500 transition-colors">Beranda</a>
+                    <a href="#profil" class="text-slate-700 hover:text-brand-500 transition-colors">Profil & Identitas</a>
+                    <a href="#keunggulan" class="text-slate-700 hover:text-brand-500 transition-colors">Keunggulan</a>
+                    <a href="#ekskul" class="text-slate-700 hover:text-brand-500 transition-colors">Ekstrakurikuler</a>
+                    <a href="#sambutan" class="text-slate-700 hover:text-brand-500 transition-colors">Sambutan</a>
+                    <a href="#berita" class="text-slate-700 hover:text-brand-500 transition-colors">Pengumuman</a>
+                    <a href="#kontak" class="text-slate-700 hover:text-brand-500 transition-colors">Kontak</a>
+                </div>
+
+                <!-- Call To Action Button -->
+                <div class="hidden lg:flex items-center">
+                    <a href="#ppdb" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-800 to-brand-500 text-white font-medium text-sm hover:shadow-lg hover:shadow-brand-500/25 transition-all transform hover:-translate-y-0.5">
+                        PPDB Online
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" class="lg:hidden text-slate-700 focus:outline-none p-2 rounded-lg hover:bg-slate-100">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Modal (AKTIF) -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200/50 bg-white/95 backdrop-blur-lg px-4 pt-3 pb-6 space-y-3">
+            <a href="#hero" class="mobile-link block py-2 text-slate-800 font-medium hover:text-brand-500">Beranda</a>
+            <a href="#profil" class="mobile-link block py-2 text-slate-600 hover:text-brand-500">Profil & Identitas</a>
+            <a href="#keunggulan" class="mobile-link block py-2 text-slate-600 hover:text-brand-500">Keunggulan</a>
+            <a href="#ekskul" class="mobile-link block py-2 text-slate-600 hover:text-brand-500">Ekstrakurikuler</a>
+            <a href="#sambutan" class="mobile-link block py-2 text-slate-600 hover:text-brand-500">Sambutan</a>
+            <a href="#berita" class="mobile-link block py-2 text-slate-600 hover:text-brand-500">Pengumuman</a>
+            <a href="#kontak" class="mobile-link block py-2 text-slate-600 hover:text-brand-500">Kontak</a>
+            <a href="#ppdb" class="mobile-link block text-center py-2.5 rounded-xl bg-brand-800 text-white font-medium shadow-md mt-2">PPDB Online</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-gradient-to-b from-brand-50/50 via-slate-50 to-slate-50">
+        <div class="absolute top-1/4 left-10 w-96 h-96 bg-brand-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-gold-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Text Left -->
+                <div class="space-y-6 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-100/80 text-brand-800 text-xs font-semibold tracking-wide border border-brand-500/20">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-gold-500"></i>
+                        Selamat Datang di Portal Resmi SMPN 4 Darangdan
+                    </div>
+                    
+                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 leading-snug">
+                        Mewujudkan Generasi <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-800 to-brand-500">Berprestasi, Berkarakter & Ramah Anak</span>
+                    </h1>
+                    
+                    <p class="text-slate-600 text-sm md:text-base leading-relaxed max-w-xl">
+                        SMPN 4 Darangdan berkomitmen membina peserta didik yang beriman, bertakwqa, bernalar kritis, mandiri, serta merawat lingkungan di Kabupaten Purwakarta.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
+                        <a href="#ppdb" class="inline-flex justify-center items-center gap-2 px-6 py-3 rounded-full bg-brand-800 text-white font-semibold text-sm shadow-lg shadow-brand-800/30 hover:bg-brand-900 transition-all">
+                            Informasi PPDB <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#profil" class="inline-flex justify-center items-center gap-2 px-6 py-3 rounded-full bg-white text-slate-700 border border-slate-200 font-semibold text-sm hover:bg-slate-100 transition-all">
+                            Profil Sekolah
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Image Container -->
+                <div class="relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-200">
+                        <img src="https://i.ibb.co.com/pvzr6zHG/sekolah.png" alt="Gedung SMPN 4 Darangdan" class="w-full h-[360px] md:h-[400px] object-cover block" />
+                    </div>
+                    <!-- Badge Floating -->
+                    <div class="absolute -bottom-6 -left-6 glass-card p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-white/40 hidden sm:flex">
+                        <div class="w-12 h-12 rounded-xl bg-brand-800 flex items-center justify-center text-white shrink-0">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <p class="text-slate-900 font-bold text-sm">Akreditasi A</p>
+                            <p class="text-slate-500 text-xs">Sekolah Ramah Anak</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFIL & IDENTITAS SEKOLAH -->
+    <section id="profil" class="py-20 bg-slate-100/80 relative border-t border-b border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-3">Profil & Identitas Resmi</h2>
+                <p class="text-slate-600">Data resmi SMP Negeri 4 Darangdan Kementerian Pendidikan.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 items-start">
+                <!-- Tabel Identitas -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-5 h-5 text-brand-800"></i> Identitas Satuan Pendidikan
+                    </h3>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex justify-between py-2 border-b border-slate-100">
+                            <span class="text-slate-500">Nama Sekolah</span>
+                            <span class="font-bold text-slate-800">SMP NEGERI 4 DARANGDAN</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-slate-100">
+                            <span class="text-slate-500">NPSN</span>
+                            <span class="font-bold text-brand-800">20217381</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-slate-100">
+                            <span class="text-slate-500">Status Sekolah</span>
+                            <span class="font-semibold text-emerald-600">NEGERI</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-slate-100">
+                            <span class="text-slate-500">Akreditasi</span>
+                            <span class="font-bold text-amber-600">A (Sangat Baik)</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-slate-100">
+                            <span class="text-slate-500">Bentuk Pendidikan</span>
+                            <span class="font-semibold text-slate-800">SMP (Sekolah Menengah Pertama)</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-slate-100">
+                            <span class="text-slate-500">Desa / Kelurahan</span>
+                            <span class="font-semibold text-slate-800">Pasirangin</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-slate-100">
+                            <span class="text-slate-500">Kecamatan</span>
+                            <span class="font-semibold text-slate-800">Darangdan</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-slate-100">
+                            <span class="text-slate-500">Kabupaten / Provinsi</span>
+                            <span class="font-semibold text-slate-800">Purwakarta / Jawa Barat</span>
+                        </div>
+                        <div class="flex justify-between py-2">
+                            <span class="text-slate-500">Kode Pos</span>
+                            <span class="font-semibold text-slate-800">41163</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ringkasan Visi Misi -->
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-br from-brand-800 to-brand-900 text-white p-6 md:p-8 rounded-2xl shadow-lg">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="target" class="w-7 h-7 text-gold-400"></i>
+                            <h3 class="text-xl font-bold">Visi Utama Sekolah</h3>
+                        </div>
+                        <p class="text-brand-100 leading-relaxed text-sm md:text-base">
+                            "Terwujudnya Peserta Didik yang Beriman, Bertakwqa, Bernalar Kritis, Mandiri, dan Merawat Lingkungan Berkarakter Profil Pelajar Pancasila."
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-800"></i> Misi Utama
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-600">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                                <span>Menanamkan nilai-nilai keagamaan melalui pembiasaan ibadah rutin sekolah.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                                <span>Mengembangkan pembelajaran literasi dan sains yang memicu nalar kritis siswa.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+                                <span>Mewujudkan lingkungan belajar yang aman, ramah anak, dan peduli kelestarian alam.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FITUR KEUNGGULAN -->
+    <section id="keunggulan" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Keunggulan SMPN 4 Darangdan</h2>
+                <p class="text-slate-600">Komitmen kami dalam membina akhlak mulia dan prestasi peserta didik.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-6 rounded-2xl hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-2 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-800 flex items-center justify-center mb-6 group-hover:bg-brand-800 group-hover:text-white transition-colors">
+                        <i data-lucide="book-open" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Program Literasi & Sastra</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Aktif memfasilitasi pembuatan karya puisi/sastra siswa hingga menjadi buku antologi karya sekolah.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-6 rounded-2xl hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-2 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-800 flex items-center justify-center mb-6 group-hover:bg-brand-800 group-hover:text-white transition-colors">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Sekolah Ramah Anak</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Terdeklarasi aktif menjamin perlindungan anak, lingkungan bebas perundungan, dan pembelajaran kondusif.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-6 rounded-2xl hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-2 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-800 flex items-center justify-center mb-6 group-hover:bg-brand-800 group-hover:text-white transition-colors">
+                        <i data-lucide="heart" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Pendidikan Karakter</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Pembiasaan keagamaan, kedisiplinan, dan penerapan kearifan lokal Purwakarta Istimewa.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-card p-6 rounded-2xl hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-2 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-800 flex items-center justify-center mb-6 group-hover:bg-brand-800 group-hover:text-white transition-colors">
+                        <i data-lucide="tree-pine" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Lingkungan Pasirangin</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Suasana lingkungan Pasirangin yang asri, hijau, sehat, dan tenang untuk fokus belajar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EKSTRAKURIKULER -->
+    <section id="ekskul" class="py-20 bg-slate-50 border-t border-slate-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Kegiatan Ekstrakurikuler</h2>
+                <p class="text-slate-600">Pengembangan bakat, kreativitas, dan potensi diri siswa di luar jam pelajaran.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center mb-4">
+                        <i data-lucide="pen-tool" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-1">Ekskul Sastra & Literasi</h3>
+                    <p class="text-slate-500 text-xs">Penulisan puisi, cerpen, majalah dinding, dan Bincang Literasi.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
+                        <i data-lucide="compass" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-1">Pramuka Pangkalan</h3>
+                    <p class="text-slate-500 text-xs">Pendidikan kepramukaan, kemah, dan pelatihan kepemimpinan siswa.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center mb-4">
+                        <i data-lucide="flag" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-1">Paskibra Sekolah</h3>
+                    <p class="text-slate-500 text-xs">Melatih kedisiplinan, ketangkasan, serta baris-berbaris resmi.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center mb-4">
+                        <i data-lucide="trophy" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-1">Olahraga & Seni</h3>
+                    <p class="text-slate-500 text-xs">Futsal, bola voli, badminton, serta seni budaya khas Sunda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SAMBUTAN KEPALA SEKOLAH -->
+    <section id="sambutan" class="py-20 bg-slate-100/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card p-8 md:p-12 rounded-3xl border border-white">
+                <div class="grid md:grid-cols-12 gap-8 items-center">
+                    <!-- Foto Kepala Sekolah -->
+                    <div class="md:col-span-5 text-center">
+                        <div class="relative inline-block">
+                            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=800&auto=format&fit=crop" alt="Foto Kepala SMPN 4 Darangdan" class="w-64 h-80 object-cover rounded-2xl shadow-xl mx-auto border-4 border-white">
+                            <div class="absolute -bottom-4 right-2 bg-brand-800 text-white p-3 rounded-xl shadow-lg">
+                                <i data-lucide="quote" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deskripsi Sambutan -->
+                    <div class="md:col-span-7 space-y-4">
+                        <span class="text-brand-800 font-semibold text-sm tracking-wider uppercase">Sambutan Kepala Sekolah</span>
+                        <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Kepala SMPN 4 Darangdan</h2>
+                        <p class="text-slate-600 leading-relaxed italic">
+                            "Sampurasun! Wilujeng sumping di website resmi SMPN 4 Darangdan Desa Pasirangin. Kami berkomitmen penuh untuk memberikan layanan pendidikan inklusif, ramah anak, serta membangun karakter siswa yang cerdas, kreatif, dan berakhlak mulia di Kabupaten Purwakarta."
+                        </p>
+                        <div class="pt-2">
+                            <p class="text-slate-900 font-bold">Kepala Sekolah SMPN 4 Darangdan</p>
+                            <p class="text-slate-500 text-sm">Dinas Pendidikan Kabupaten Purwakarta</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PENGUMUMAN & BERITA TERBARU -->
+    <section id="berita" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900">Pengumuman & Agenda Terbaru</h2>
+                    <p class="text-slate-600 mt-2">Informasi terkini dan rekam kegiatan SMPN 4 Darangdan.</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card Artikel 1 -->
+                <article class="rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-shadow bg-white flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop" alt="Pengumuman PPDB" class="h-48 w-full object-cover">
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-brand-800 uppercase tracking-wider">PPDB</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-2 mb-2 line-clamp-2">Penerimaan Peserta Didik Baru (PPDB) Tahun Ajaran 2026/2027</h3>
+                            <p class="text-slate-600 text-sm line-clamp-3">Informasi lengkap pendaftaran siswa baru secara online dan offline di Kampus SMPN 4 Darangdan Pasirangin.</p>
+                        </div>
+                        <div class="mt-6 flex items-center text-xs text-slate-500 gap-2">
+                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                            <span>Tahun Ajaran 2026/2027</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card Artikel 2 -->
+                <article class="rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-shadow bg-white flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800&auto=format&fit=crop" alt="Literasi Sastra" class="h-48 w-full object-cover">
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-brand-800 uppercase tracking-wider">Literasi & Sastra</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-2 mb-2 line-clamp-2">Bincang Literasi & Penerbitan Buku Antologi Puisi Siswa</h3>
+                            <p class="text-slate-600 text-sm line-clamp-3">Pengembangan bakat menulis siswa melalui pengumpulan puisi hingga menjadi buku terbitan sekolah.</p>
+                        </div>
+                        <div class="mt-6 flex items-center text-xs text-slate-500 gap-2">
+                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                            <span>Program Sastra</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card Artikel 3 -->
+                <article class="rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-shadow bg-white flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800&auto=format&fit=crop" alt="Sekolah Ramah Anak" class="h-48 w-full object-cover">
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-brand-800 uppercase tracking-wider">Sosialisasi</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-2 mb-2 line-clamp-2">Deklarasi & Sosialisasi Program Sekolah Ramah Anak</h3>
+                            <p class="text-slate-600 text-sm line-clamp-3">Komitmen bersama menciptakan lingkungan sekolah yang aman, nyaman, dan ramah bagi seluruh peserta didik.</p>
+                        </div>
+                        <div class="mt-6 flex items-center text-xs text-slate-500 gap-2">
+                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                            <span>Program Unggulan</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION PPDB ONLINE -->
+    <section id="ppdb" class="py-20 bg-gradient-to-br from-brand-800 via-brand-900 to-slate-900 text-white relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-gold-400 text-xs font-semibold">
+                <i data-lucide="user-plus" class="w-4 h-4"></i> Pendaftaran Siswa Baru
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold">PPDB Online SMPN 4 Darangdan 2026/2027</h2>
+            <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+                Bergabunglah menjadi bagian dari keluarga besar SMPN 4 Darangdan. Pendaftaran dapat dilakukan secara langsung di kampus sekolah Desa Pasirangin atau secara daring.
+            </p>
+            <div class="pt-4 flex flex-wrap justify-center gap-4">
+                <a href="#kontak" class="px-8 py-3.5 rounded-full bg-gold-500 text-slate-900 font-bold hover:bg-gold-400 transition-colors shadow-lg">
+                    Hubungi Panitia PPDB
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK & ALAMAT LENGKAP -->
+    <section id="kontak" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-3">Kontak & Lokasi Sekolah</h2>
+                <p class="text-slate-600">Silakan hubungi kami atau kunjungi kampus SMPN 4 Darangdan.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Box 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col items-center text-center">
+                    <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-800 flex items-center justify-center mb-4">
+                        <i data-lucide="map-pin" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-2">Alamat Sekolah</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Desa Pasirangin, Kecamatan Darangdan, Kabupaten Purwakarta, Jawa Barat (Kode Pos: 41163)
+                    </p>
+                </div>
+
+                <!-- Box 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col items-center text-center">
+                    <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-800 flex items-center justify-center mb-4">
+                        <i data-lucide="phone" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-2">Telepon / Hotline</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        0264-3462829<br>
+                        <span class="text-xs text-slate-400">(Jam Kerja Operasional Sekolah)</span>
+                    </p>
+                </div>
+
+                <!-- Box 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col items-center text-center">
+                    <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-800 flex items-center justify-center mb-4">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-2">Email Resmi</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        smpn4darangdan@gmail.com
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-300 pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 pb-12">
+                <!-- Branding -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center text-white">
+                            <i data-lucide="school" class="w-6 h-6"></i>
+                        </div>
+                        <span class="font-bold text-lg text-white">SMPN 4 DARANGDAN</span>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        Sekolah Menengah Pertama Negeri 4 Darangdan, Pasirangin, Kab. Purwakarta, Jawa Barat (NPSN: 20217381).
+                    </p>
+                </div>
+
+                <!-- Navigasi -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Navigasi Utama</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#hero" class="hover:text-white transition-colors">Beranda</a></li>
+                        <li><a href="#profil" class="hover:text-white transition-colors">Profil & Identitas</a></li>
+                        <li><a href="#keunggulan" class="hover:text-white transition-colors">Keunggulan</a></li>
+                        <li><a href="#ekskul" class="hover:text-white transition-colors">Ekstrakurikuler</a></li>
+                        <li><a href="#sambutan" class="hover:text-white transition-colors">Sambutan</a></li>
+                        <li><a href="#berita" class="hover:text-white transition-colors">Pengumuman</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kontak -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Kontak & Alamat</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-brand-500 shrink-0"></i>
+                            <span>Desa Pasirangin, Kec. Darangdan, Kab. Purwakarta, Jawa Barat 41163</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-brand-500 shrink-0"></i>
+                            <span>smpn4darangdan@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Sosial Media -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Media Sosial</h4>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-500 hover:text-white transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-500 hover:text-white transition-colors">
+                            <i data-lucide="youtube" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-500 hover:text-white transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="border-t border-slate-800 pt-8 text-center text-xs text-slate-500">
+                <p>&copy; 2026 SMPN 4 Darangdan Kabupaten Purwakarta. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT UTILS -->
+    <script>
+        // Inisialisasi Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Otomatis tutup mobile menu saat link diklik
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
