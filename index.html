@@ -47,14 +47,6 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
-        /* Style Karakter Interaktif Pramuka */
-        .pramuka-wrapper {
-            position: absolute;
-            bottom: 0;
-            right: 4%;
-            z-index: 30;
-            pointer-events: none;
-        }
         #pramuka-img {
             transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
             transform-origin: bottom center;
@@ -123,13 +115,15 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-brand-50/50 via-slate-50 to-slate-50">
+    <!-- HERO SECTION (UPDATED PHOTO & LAYOUT) -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-brand-50/50 via-slate-50 to-slate-50 overflow-hidden">
         <div class="absolute top-1/4 left-10 w-96 h-96 bg-brand-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
         <div class="absolute bottom-10 right-10 w-96 h-96 bg-gold-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid md:grid-cols-2 gap-12 items-center">
+                
+                <!-- Teks Hero -->
                 <div class="space-y-6 text-center md:text-left">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-100/80 text-brand-800 text-xs font-semibold tracking-wide border border-brand-500/20">
                         <i data-lucide="sparkles" class="w-3.5 h-3.5 text-gold-500"></i>
@@ -154,11 +148,17 @@
                     </div>
                 </div>
 
+                <!-- Gambar Utama Gedung (Foto Asli Sekolah) -->
                 <div class="relative">
                     <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-200">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop" alt="Gedung SMPN 4 Darangdan" class="w-full h-[360px] md:h-[400px] object-cover block" />
+                        <img 
+                            src="https://i.ibb.co/mrCtyfF1/sekolah.png" 
+                            alt="Gedung SMPN 4 Darangdan" 
+                            class="w-full h-[360px] md:h-[400px] object-cover block"
+                            onerror="this.onerror=null; this.src='https://placehold.co/800x600/1e3a8a/FFF?text=SMPN+4+Darangdan';"
+                        />
                     </div>
-                    <div class="absolute -bottom-6 -left-6 glass-card p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-white/40 hidden sm:flex">
+                    <div class="absolute -bottom-6 -left-6 glass-card p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-white/40 hidden sm:flex z-20">
                         <div class="w-12 h-12 rounded-xl bg-brand-800 flex items-center justify-center text-white shrink-0">
                             <i data-lucide="award" class="w-6 h-6"></i>
                         </div>
@@ -168,17 +168,18 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
-        <!-- KARAKTER INTERAKTIF PRAMUKA (FIXED IMAGE & SMOOTH MOUSE FOLLOW) -->
-        <div class="pramuka-wrapper hidden lg:block">
-            <div id="pramuka-img" class="flex flex-col items-center bg-white/90 backdrop-blur border border-amber-200 shadow-xl rounded-2xl p-3 w-44 text-center">
-                <div class="w-20 h-20 rounded-full bg-amber-100 border-2 border-amber-500 flex items-center justify-center mb-2 shadow-inner">
-                    <i data-lucide="compass" class="w-10 h-10 text-amber-700 animate-pulse"></i>
+        <!-- PRAMUKA FLOATING CARD -->
+        <div class="absolute bottom-6 right-6 z-30 hidden lg:block">
+            <div id="pramuka-img" class="flex flex-col items-center bg-white/95 backdrop-blur border border-amber-200 shadow-2xl rounded-2xl p-4 w-44 text-center">
+                <div class="w-16 h-16 rounded-full bg-amber-100 border-2 border-amber-500 flex items-center justify-center mb-2 shadow-inner">
+                    <i data-lucide="compass" class="w-8 h-8 text-amber-700 animate-pulse"></i>
                 </div>
-                <span class="text-xs font-bold text-amber-900">Pramuka SMPN 4</span>
-                <span class="text-[10px] text-amber-700 font-medium">Praja Muda Karana</span>
+                <span class="text-xs font-bold text-amber-900 block">Pramuka SMPN 4</span>
+                <span class="text-[10px] text-amber-700 font-medium block">Praja Muda Karana</span>
             </div>
         </div>
     </section>
@@ -869,7 +870,7 @@
             });
         }
 
-        // PERBAIKAN LOGIKA INTERAKSI MOUSE PRAMUKA (MENGGUNAKAN BOUNDING DENGAN CLAMPING)
+        // PERBAIKAN LOGIKA INTERAKSI MOUSE PRAMUKA (SMOOTH & CONTROLLED)
         const heroSection = document.getElementById('hero');
         const pramukaImg = document.getElementById('pramuka-img');
 
@@ -879,17 +880,14 @@
 
                 // Cek apakah kursor ada di dekat area hero
                 if (e.clientY >= rect.top - 100 && e.clientY <= rect.bottom + 100) {
-                    // Hitung pusat Hero Section
                     const centerX = rect.left + rect.width / 2;
                     const centerY = rect.top + rect.height / 2;
 
-                    // Hitung jarak kursor dari pusat hero
                     const deltaX = (e.clientX - centerX) / (rect.width / 2);
                     const deltaY = (e.clientY - centerY) / (rect.height / 2);
 
-                    // Batasi pergerakan maksimal (Maks 25px horizontal, 15px vertikal)
-                    const moveX = Math.max(-25, Math.min(25, deltaX * 25));
-                    const moveY = Math.max(-15, Math.min(15, deltaY * 15));
+                    const moveX = Math.max(-15, Math.min(15, deltaX * 15));
+                    const moveY = Math.max(-10, Math.min(10, deltaY * 10));
 
                     pramukaImg.style.transform = `translate3d(${moveX}px, ${moveY}px, 0px)`;
                 } else {
