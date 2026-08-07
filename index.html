@@ -47,18 +47,18 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
-        /* Style Tambahan untuk Karakter Interaktif Pramuka */
-        .pramuka-container {
+        /* Style Karakter Interaktif Pramuka */
+        .pramuka-wrapper {
             position: absolute;
-            bottom: -10px;
-            right: 5%;
-            z-index: 20;
+            bottom: 0;
+            right: 4%;
+            z-index: 30;
             pointer-events: none;
         }
         #pramuka-img {
-            transition: transform 0.1s ease-out;
+            transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
             transform-origin: bottom center;
-            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
+            will-change: transform;
         }
     </style>
 </head>
@@ -124,7 +124,7 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-gradient-to-b from-brand-50/50 via-slate-50 to-slate-50">
+    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-brand-50/50 via-slate-50 to-slate-50">
         <div class="absolute top-1/4 left-10 w-96 h-96 bg-brand-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
         <div class="absolute bottom-10 right-10 w-96 h-96 bg-gold-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
 
@@ -171,9 +171,15 @@
             </div>
         </div>
 
-        <!-- GAMBAR KARAKTER PRAMUKA INTERAKSI MOUSE -->
-        <div class="pramuka-container hidden lg:block">
-            <img id="pramuka-img" src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=400&auto=format&fit=crop" alt="Karakter Pramuka SMPN 4 Darangdan" class="w-48 xl:w-56 h-auto rounded-xl shadow-lg border-2 border-white">
+        <!-- KARAKTER INTERAKTIF PRAMUKA (FIXED IMAGE & SMOOTH MOUSE FOLLOW) -->
+        <div class="pramuka-wrapper hidden lg:block">
+            <div id="pramuka-img" class="flex flex-col items-center bg-white/90 backdrop-blur border border-amber-200 shadow-xl rounded-2xl p-3 w-44 text-center">
+                <div class="w-20 h-20 rounded-full bg-amber-100 border-2 border-amber-500 flex items-center justify-center mb-2 shadow-inner">
+                    <i data-lucide="compass" class="w-10 h-10 text-amber-700 animate-pulse"></i>
+                </div>
+                <span class="text-xs font-bold text-amber-900">Pramuka SMPN 4</span>
+                <span class="text-[10px] text-amber-700 font-medium">Praja Muda Karana</span>
+            </div>
         </div>
     </section>
 
@@ -804,25 +810,20 @@
         </div>
     </section>
 
-    <!-- FOOTER UTAMA (Paling Bawah) -->
+    <!-- FOOTER UTAMA -->
     <footer class="bg-slate-900 text-white py-12 border-t border-slate-800 text-center text-sm text-slate-400">
         <div class="max-w-7xl mx-auto px-4 space-y-6">
-            
-            <!-- Tautan Ikon Media Sosial Footer -->
             <div class="flex justify-center items-center gap-4 flex-wrap">
-                <!-- YouTube -->
                 <a href="https://www.youtube.com/@smpn4darangdan" target="_blank" rel="noopener noreferrer" title="YouTube smpn4darangdan" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-slate-800 text-slate-300 hover:bg-red-600 hover:text-white transition-all border border-slate-700/60 shadow-sm group">
                     <i data-lucide="youtube" class="w-5 h-5 text-red-500 group-hover:text-white shrink-0"></i>
                     <span class="font-medium text-xs">YouTube</span>
                 </a>
                 
-                <!-- Instagram -->
                 <a href="https://www.instagram.com/smpn4darangdan" target="_blank" rel="noopener noreferrer" title="Instagram smpn4darangdan" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-slate-800 text-slate-300 hover:bg-pink-600 hover:text-white transition-all border border-slate-700/60 shadow-sm group">
                     <i data-lucide="instagram" class="w-5 h-5 text-pink-500 group-hover:text-white shrink-0"></i>
                     <span class="font-medium text-xs">Instagram</span>
                 </a>
                 
-                <!-- Facebook -->
                 <a href="https://www.facebook.com/smpn4darangdan" target="_blank" rel="noopener noreferrer" title="Facebook SMPN 4 Darangdan" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-slate-800 text-slate-300 hover:bg-blue-600 hover:text-white transition-all border border-slate-700/60 shadow-sm group">
                     <i data-lucide="facebook" class="w-5 h-5 text-blue-500 group-hover:text-white shrink-0"></i>
                     <span class="font-medium text-xs">Facebook</span>
@@ -836,27 +837,22 @@
     <!-- MODAL POPUP ARTIKEL BACA SELENGKAPNYA -->
     <div id="article-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative border border-slate-100">
-            <!-- Tombol Close Modal -->
             <button onclick="closeModal()" class="sticky top-4 right-4 float-right bg-slate-100 hover:bg-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center z-10 transition-colors">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
-            
-            <div id="modal-content" class="p-6 sm:p-10">
-                <!-- Konten artikel dimasukkan secara dinamis lewat JS -->
-            </div>
+            <div id="modal-content" class="p-6 sm:p-10"></div>
         </div>
     </div>
 
-    <!-- SCRIPT TAMPILAN MENU MOBILE, MODAL, IKON, DAN EFEK INTERAKSI PRAMUKA -->
+    <!-- SCRIPT TAMPILAN MENU MOBILE, MODAL, IKON, DAN FIX MOUSE FOLLOW -->
     <script>
-        // Pastikan Lucide merender ikon setelah halaman selesai dimuat (DOM Ready)
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
         });
 
-        // Script Toggle Menu Navigasi HP
+        // Toggle Menu Navigasi Mobile
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -873,29 +869,36 @@
             });
         }
 
-        // Script Pergerakan Mouse Karakter Pramuka
+        // PERBAIKAN LOGIKA INTERAKSI MOUSE PRAMUKA (MENGGUNAKAN BOUNDING DENGAN CLAMPING)
         const heroSection = document.getElementById('hero');
         const pramukaImg = document.getElementById('pramuka-img');
 
         if (heroSection && pramukaImg) {
-            heroSection.addEventListener('mousemove', (e) => {
+            window.addEventListener('mousemove', (e) => {
                 const rect = heroSection.getBoundingClientRect();
-                const mouseX = e.clientX - rect.left;
-                const mouseY = e.clientY - rect.top;
 
-                // Hitung perpindahan pergerakan (Maksimal pergeseran X = 40px, Y = 15px)
-                const moveX = ((mouseX / rect.width) - 0.5) * 80;
-                const moveY = ((mouseY / rect.height) - 0.5) * 30;
+                // Cek apakah kursor ada di dekat area hero
+                if (e.clientY >= rect.top - 100 && e.clientY <= rect.bottom + 100) {
+                    // Hitung pusat Hero Section
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
 
-                pramukaImg.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            });
+                    // Hitung jarak kursor dari pusat hero
+                    const deltaX = (e.clientX - centerX) / (rect.width / 2);
+                    const deltaY = (e.clientY - centerY) / (rect.height / 2);
 
-            heroSection.addEventListener('mouseleave', () => {
-                pramukaImg.style.transform = `translate(0px, 0px)`;
+                    // Batasi pergerakan maksimal (Maks 25px horizontal, 15px vertikal)
+                    const moveX = Math.max(-25, Math.min(25, deltaX * 25));
+                    const moveY = Math.max(-15, Math.min(15, deltaY * 15));
+
+                    pramukaImg.style.transform = `translate3d(${moveX}px, ${moveY}px, 0px)`;
+                } else {
+                    pramukaImg.style.transform = `translate3d(0px, 0px, 0px)`;
+                }
             });
         }
 
-        // DATA ARTIKEL
+        // DATA ARTIKEL MODAL
         const articles = {
             'guru1': {
                 tag: 'Model Pembelajaran',
@@ -982,7 +985,6 @@
             }
         };
 
-        // FUNGSI MODAL
         function openModal(articleId) {
             const article = articles[articleId];
             if (!article) return;
