@@ -47,6 +47,19 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
+        /* Style Tambahan untuk Karakter Interaktif Pramuka */
+        .pramuka-container {
+            position: absolute;
+            bottom: -10px;
+            right: 5%;
+            z-index: 20;
+            pointer-events: none;
+        }
+        #pramuka-img {
+            transition: transform 0.1s ease-out;
+            transform-origin: bottom center;
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
@@ -110,7 +123,7 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (Dengan Karakter Animasi Pramuka Interactive) -->
     <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-gradient-to-b from-brand-50/50 via-slate-50 to-slate-50">
         <div class="absolute top-1/4 left-10 w-96 h-96 bg-brand-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
         <div class="absolute bottom-10 right-10 w-96 h-96 bg-gold-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
@@ -156,6 +169,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- GAMBAR KARAKTER PRAMUKA INTERAKSI MOUSE -->
+        <div class="pramuka-container hidden lg:block">
+            <img id="pramuka-img" src="guru-pramuka.png" alt="Karakter Pramuka SMPN 4 Darangdan" class="w-48 xl:w-56 h-auto">
         </div>
     </section>
 
@@ -829,7 +847,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT TAMPILAN MENU MOBILE, MODAL, DAN IKON -->
+    <!-- SCRIPT TAMPILAN MENU MOBILE, MODAL, IKON, DAN EFEK INTERAKSI PRAMUKA -->
     <script>
         // Pastikan Lucide merender ikon setelah halaman selesai dimuat (DOM Ready)
         document.addEventListener('DOMContentLoaded', function() {
@@ -852,6 +870,28 @@
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
                 });
+            });
+        }
+
+        // Script Pergerakan Mouse Karakter Pramuka
+        const heroSection = document.getElementById('hero');
+        const pramukaImg = document.getElementById('pramuka-img');
+
+        if (heroSection && pramukaImg) {
+            heroSection.addEventListener('mousemove', (e) => {
+                const rect = heroSection.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+
+                // Hitung perpindahan pergerakan (Maksimal pergeseran X = 40px, Y = 15px)
+                const moveX = ((mouseX / rect.width) - 0.5) * 80;
+                const moveY = ((mouseY / rect.height) - 0.5) * 30;
+
+                pramukaImg.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+
+            heroSection.addEventListener('mouseleave', () => {
+                pramukaImg.style.transform = `translate(0px, 0px)`;
             });
         }
 
@@ -963,9 +1003,8 @@
             `;
 
             document.getElementById('article-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Disable scroll dibelakang modal
+            document.body.style.overflow = 'hidden';
             
-            // Re-render icon jika ada icon di dalam modal
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
@@ -973,10 +1012,9 @@
 
         function closeModal() {
             document.getElementById('article-modal').classList.add('hidden');
-            document.body.style.overflow = 'auto'; // Re-enable scroll
+            document.body.style.overflow = 'auto';
         }
 
-        // Close Modal saat klik area luar modal
         const modalEl = document.getElementById('article-modal');
         if (modalEl) {
             modalEl.addEventListener('click', function(e) {
