@@ -85,12 +85,12 @@
 
     <style>
         .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(226, 232, 240, 0.8);
@@ -120,17 +120,19 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white relative flex flex-col min-h-screen">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white relative flex flex-col min-h-screen overflow-x-hidden">
 
     <!-- TOP ANNOUNCEMENT BAR -->
-    <div class="bg-brand-900 text-white text-xs py-2 px-4 text-center font-medium tracking-wide flex justify-between items-center max-w-7xl mx-auto w-full sm:px-6 lg:px-8 border-b border-slate-800">
-        <div class="flex items-center gap-2 mx-auto sm:mx-0">
-            <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>PPDB Tahun Ajaran 2026/2027 Telah Dibuka!</span>
-        </div>
-        <div class="hidden sm:flex items-center gap-6 text-slate-300">
-            <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-500"></i> Pasirangin, Purwakarta</span>
-            <span class="flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5 text-brand-500"></i> smpn4darangdan@gmail.com</span>
+    <div class="bg-brand-900 text-white text-xs py-2 px-4 border-b border-slate-800 relative z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center w-full sm:px-6 lg:px-8">
+            <div class="flex items-center gap-2 mx-auto sm:mx-0">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>PPDB Tahun Ajaran 2026/2027 Telah Dibuka!</span>
+            </div>
+            <div class="hidden sm:flex items-center gap-6 text-slate-300">
+                <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-500"></i> Pasirangin, Purwakarta</span>
+                <span class="flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5 text-brand-500"></i> smpn4darangdan@gmail.com</span>
+            </div>
         </div>
     </div>
 
@@ -194,7 +196,7 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <section id="hero" class="relative pt-12 pb-20 md:pt-20 md:pb-28 hero-gradient overflow-hidden">
+    <section id="hero" class="relative pt-12 pb-24 md:pt-20 md:pb-32 hero-gradient overflow-hidden">
         <div class="absolute top-1/4 left-10 w-96 h-96 bg-brand-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
         <div class="absolute bottom-10 right-10 w-96 h-96 bg-gold-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
 
@@ -243,19 +245,19 @@
                 </div>
 
                 <!-- Hero Image Holder -->
-                <div class="lg:col-span-5 relative">
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-slate-100 group">
+                <div class="lg:col-span-5 relative mt-6 lg:mt-0 mb-6 sm:mb-8 lg:mb-0">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-slate-100 group z-10">
                         <img 
                             src="https://i.ibb.co/mrCtyfF1/sekolah.png" 
                             alt="Gedung SMPN 4 Darangdan" 
                             class="w-full h-[380px] sm:h-[450px] object-cover block group-hover:scale-105 transition-transform duration-700"
                             onerror="this.onerror=null; this.src='https://placehold.co/800x600/0f2942/FFF?text=SMPN+4+Darangdan';"
-                        />
+                        >
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent"></div>
                     </div>
 
                     <!-- Floating Badge 1 -->
-                    <div class="absolute -bottom-6 -left-6 glass-card p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-white/80 hidden sm:flex z-20">
+                    <div class="absolute -bottom-6 -left-4 sm:-left-6 glass-card p-4 rounded-2xl shadow-xl items-center gap-4 border border-white/80 hidden sm:flex z-20">
                         <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-800 to-brand-500 flex items-center justify-center text-white shrink-0 shadow-md">
                             <i data-lucide="award" class="w-6 h-6"></i>
                         </div>
@@ -266,7 +268,7 @@
                     </div>
 
                     <!-- Floating Badge 2 -->
-                    <div class="absolute -top-4 -right-4 glass-card p-3 px-4 rounded-2xl shadow-lg flex items-center gap-3 border border-white/80 hidden sm:flex z-20">
+                    <div class="absolute -top-4 -right-4 glass-card p-3 px-4 rounded-2xl shadow-lg items-center gap-3 border border-white/80 hidden sm:flex z-20">
                         <div class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></div>
                         <span class="text-xs font-bold text-slate-800">Sekolah Ramah Anak</span>
                     </div>
@@ -296,39 +298,39 @@
                             Data Satuan Pendidikan
                         </h3>
                         <div class="space-y-3.5 text-sm">
-                            <div class="flex justify-between py-2 border-b border-slate-100">
+                            <div class="flex flex-col sm:flex-row sm:justify-between py-2 border-b border-slate-100 gap-1 sm:gap-0">
                                 <span class="text-slate-500">Nama Sekolah</span>
                                 <span class="font-bold text-slate-900">SMP NEGERI 4 DARANGDAN</span>
                             </div>
-                            <div class="flex justify-between py-2 border-b border-slate-100">
+                            <div class="flex flex-col sm:flex-row sm:justify-between py-2 border-b border-slate-100 gap-1 sm:gap-0">
                                 <span class="text-slate-500">NPSN</span>
                                 <span class="font-bold text-brand-500">20217381</span>
                             </div>
-                            <div class="flex justify-between py-2 border-b border-slate-100">
+                            <div class="flex flex-col sm:flex-row sm:justify-between py-2 border-b border-slate-100 gap-1 sm:gap-0">
                                 <span class="text-slate-500">Status Sekolah</span>
-                                <span class="font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs">NEGERI</span>
+                                <div><span class="font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs inline-block">NEGERI</span></div>
                             </div>
-                            <div class="flex justify-between py-2 border-b border-slate-100">
+                            <div class="flex flex-col sm:flex-row sm:justify-between py-2 border-b border-slate-100 gap-1 sm:gap-0">
                                 <span class="text-slate-500">Akreditasi</span>
                                 <span class="font-bold text-amber-600">A (Sangat Baik)</span>
                             </div>
-                            <div class="flex justify-between py-2 border-b border-slate-100">
+                            <div class="flex flex-col sm:flex-row sm:justify-between py-2 border-b border-slate-100 gap-1 sm:gap-0">
                                 <span class="text-slate-500">Bentuk Pendidikan</span>
                                 <span class="font-semibold text-slate-800">SMP</span>
                             </div>
-                            <div class="flex justify-between py-2 border-b border-slate-100">
+                            <div class="flex flex-col sm:flex-row sm:justify-between py-2 border-b border-slate-100 gap-1 sm:gap-0">
                                 <span class="text-slate-500">Desa / Kelurahan</span>
                                 <span class="font-semibold text-slate-800">Pasirangin</span>
                             </div>
-                            <div class="flex justify-between py-2 border-b border-slate-100">
+                            <div class="flex flex-col sm:flex-row sm:justify-between py-2 border-b border-slate-100 gap-1 sm:gap-0">
                                 <span class="text-slate-500">Kecamatan</span>
                                 <span class="font-semibold text-slate-800">Darangdan</span>
                             </div>
-                            <div class="flex justify-between py-2 border-b border-slate-100">
+                            <div class="flex flex-col sm:flex-row sm:justify-between py-2 border-b border-slate-100 gap-1 sm:gap-0">
                                 <span class="text-slate-500">Kabupaten / Provinsi</span>
                                 <span class="font-semibold text-slate-800">Purwakarta / Jawa Barat</span>
                             </div>
-                            <div class="flex justify-between py-2">
+                            <div class="flex flex-col sm:flex-row sm:justify-between py-2 gap-1 sm:gap-0">
                                 <span class="text-slate-500">Kode Pos</span>
                                 <span class="font-semibold text-slate-800">41163</span>
                             </div>
@@ -447,156 +449,156 @@
 
             <div id="guru-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7">
                 <!-- Card Guru 1 -->
-                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group">
+                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                     <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop" alt="Foto Nada Nadiah" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-5 text-center">
+                    <div class="p-5 text-center flex-1 flex flex-col justify-between">
                         <h3 class="guru-nama font-bold text-slate-900 text-base group-hover:text-brand-500 transition-colors">Nada Nadiah, S.Pd.I</h3>
-                        <span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru PAI</span>
+                        <div><span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru PAI</span></div>
                     </div>
                 </div>
 
                 <!-- Card Guru 2 -->
-                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group">
+                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                     <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1580894732413-a75151b14f82?q=80&w=600&auto=format&fit=crop" alt="Foto Rima Mustika Apriliani" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-5 text-center">
+                    <div class="p-5 text-center flex-1 flex flex-col justify-between">
                         <h3 class="guru-nama font-bold text-slate-900 text-base group-hover:text-brand-500 transition-colors">Rima Mustika Apriliani, S.Pd</h3>
-                        <span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru B. Indonesia</span>
+                        <div><span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru B. Indonesia</span></div>
                     </div>
                 </div>
 
                 <!-- Card Guru 3 -->
-                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group">
+                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                     <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop" alt="Foto Anto Lukmanulhakim" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-5 text-center">
+                    <div class="p-5 text-center flex-1 flex flex-col justify-between">
                         <h3 class="guru-nama font-bold text-slate-900 text-base group-hover:text-brand-500 transition-colors">Anto Lukmanulhakim, S.Pd</h3>
-                        <span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru Pendidikan Pancasila</span>
+                        <div><span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru Pendidikan Pancasila</span></div>
                     </div>
                 </div>
 
                 <!-- Card Guru 4 -->
-                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group">
+                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                     <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop" alt="Foto Nizar Abdul Hanan" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-5 text-center">
+                    <div class="p-5 text-center flex-1 flex flex-col justify-between">
                         <h3 class="guru-nama font-bold text-slate-900 text-base group-hover:text-brand-500 transition-colors">Nizar Abdul Hanan, S.Pd</h3>
-                        <span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru BK</span>
+                        <div><span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru BK</span></div>
                     </div>
                 </div>
 
                 <!-- Card Guru 5 -->
-                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group">
+                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                     <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" alt="Foto Iman Sukirman" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-5 text-center">
+                    <div class="p-5 text-center flex-1 flex flex-col justify-between">
                         <h3 class="guru-nama font-bold text-slate-900 text-base group-hover:text-brand-500 transition-colors">Iman Sukirman, S.Pd</h3>
-                        <span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru B. Inggris</span>
+                        <div><span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru B. Inggris</span></div>
                     </div>
                 </div>
 
                 <!-- Card Guru 6 -->
-                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group">
+                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                     <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop" alt="Foto Drs. Priyo Agung Iskandar" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-5 text-center">
+                    <div class="p-5 text-center flex-1 flex flex-col justify-between">
                         <h3 class="guru-nama font-bold text-slate-900 text-base group-hover:text-brand-500 transition-colors">Drs. Priyo Agung Iskandar</h3>
-                        <span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru Matematika</span>
+                        <div><span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru Matematika</span></div>
                     </div>
                 </div>
 
                 <!-- Card Guru 7 -->
-                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group">
+                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                     <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop" alt="Foto Ani Marlina" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-5 text-center">
+                    <div class="p-5 text-center flex-1 flex flex-col justify-between">
                         <h3 class="guru-nama font-bold text-slate-900 text-base group-hover:text-brand-500 transition-colors">Ani Marlina, M.Pd.</h3>
-                        <span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru B. Inggris</span>
+                        <div><span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru B. Inggris</span></div>
                     </div>
                 </div>
 
                 <!-- Card Guru 8 -->
-                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group">
+                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                     <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?q=80&w=600&auto=format&fit=crop" alt="Foto Yoyos Rosyani" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-5 text-center">
+                    <div class="p-5 text-center flex-1 flex flex-col justify-between">
                         <h3 class="guru-nama font-bold text-slate-900 text-base group-hover:text-brand-500 transition-colors">Yoyos Rosyani, M.Pd</h3>
-                        <span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru B. Indonesia</span>
+                        <div><span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru B. Indonesia</span></div>
                     </div>
                 </div>
 
                 <!-- Card Guru 9 -->
-                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group">
+                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                     <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=600&auto=format&fit=crop" alt="Foto Elin Nurhabibah" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-5 text-center">
+                    <div class="p-5 text-center flex-1 flex flex-col justify-between">
                         <h3 class="guru-nama font-bold text-slate-900 text-base group-hover:text-brand-500 transition-colors">Elin Nurhabibah, S.Pd</h3>
-                        <span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru IPA</span>
+                        <div><span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru IPA</span></div>
                     </div>
                 </div>
 
                 <!-- Card Guru 10 -->
-                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group">
+                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                     <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1548142813-c348350df52b?q=80&w=600&auto=format&fit=crop" alt="Foto Balgis Az Zahra" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-5 text-center">
+                    <div class="p-5 text-center flex-1 flex flex-col justify-between">
                         <h3 class="guru-nama font-bold text-slate-900 text-base group-hover:text-brand-500 transition-colors">Balgis Az Zahra, S.Pd</h3>
-                        <span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru IPA</span>
+                        <div><span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru IPA</span></div>
                     </div>
                 </div>
 
                 <!-- Card Guru 11 -->
-                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group">
+                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                     <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600&auto=format&fit=crop" alt="Foto Hadi Gunawan" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-5 text-center">
+                    <div class="p-5 text-center flex-1 flex flex-col justify-between">
                         <h3 class="guru-nama font-bold text-slate-900 text-base group-hover:text-brand-500 transition-colors">Hadi Gunawan, S.Pd</h3>
-                        <span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru PJOK</span>
+                        <div><span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru PJOK</span></div>
                     </div>
                 </div>
 
                 <!-- Card Guru 12 -->
-                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group">
+                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                     <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=600&auto=format&fit=crop" alt="Foto Wise Nursyabani" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-5 text-center">
+                    <div class="p-5 text-center flex-1 flex flex-col justify-between">
                         <h3 class="guru-nama font-bold text-slate-900 text-base group-hover:text-brand-500 transition-colors">Wise Nursyabani, S.Pd</h3>
-                        <span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru Informatika</span>
+                        <div><span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru Informatika</span></div>
                     </div>
                 </div>
 
                 <!-- Card Guru 13 -->
-                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group">
+                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                     <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=600&auto=format&fit=crop" alt="Foto Susi Nendiati" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-5 text-center">
+                    <div class="p-5 text-center flex-1 flex flex-col justify-between">
                         <h3 class="guru-nama font-bold text-slate-900 text-base group-hover:text-brand-500 transition-colors">Susi Nendiati, S.Pd</h3>
-                        <span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru B. Indonesia</span>
+                        <div><span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru B. Indonesia</span></div>
                     </div>
                 </div>
 
                 <!-- Card Guru 14 -->
-                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group">
+                <div class="guru-card bg-white rounded-3xl overflow-hidden border border-slate-200/70 shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                     <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=600&auto=format&fit=crop" alt="Foto Yayah Marwiyah" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-5 text-center">
+                    <div class="p-5 text-center flex-1 flex flex-col justify-between">
                         <h3 class="guru-nama font-bold text-slate-900 text-base group-hover:text-brand-500 transition-colors">Yayah Marwiyah, S.Pd</h3>
-                        <span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru Matematika</span>
+                        <div><span class="guru-mapel inline-block px-3 py-1 bg-brand-50 text-brand-500 text-xs font-semibold rounded-full mt-2">Guru Matematika</span></div>
                     </div>
                 </div>
             </div>
@@ -651,7 +653,7 @@
                     <p class="text-slate-600 text-sm leading-relaxed">Olahraga yang melatih keterampilan teknik bermain, kerja sama tim, kedisiplinan, dan stamina fisik.</p>
                 </div>
 
-                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-brand-200 hover:shadow-card-hover transition-all duration-300">
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-brand-200 hover:shadow-card-hover transition-all duration-300 sm:col-span-2 lg:col-span-1">
                     <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-800 flex items-center justify-center mb-5">
                         <i data-lucide="heart-pulse" class="w-6 h-6"></i>
                     </div>
@@ -1029,7 +1031,7 @@
                     const mapel = card.querySelector('.guru-mapel').textContent.toLowerCase();
 
                     if (nama.includes(query) || mapel.includes(query)) {
-                        card.style.display = 'block';
+                        card.style.display = 'flex';
                         hasMatch = true;
                     } else {
                         card.style.display = 'none';
