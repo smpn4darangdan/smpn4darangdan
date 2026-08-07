@@ -78,6 +78,7 @@
         }
         #pramuka-img {
             will-change: transform;
+            transform-style: preserve-3d;
         }
         .nav-link.active {
             color: #0284c7;
@@ -205,12 +206,12 @@
 
         <!-- PRAMUKA FLOATING CARD -->
         <div class="absolute bottom-6 right-6 z-30 hidden lg:block">
-            <a href="https://ibb.co/7FVTLVy" target="_blank" rel="noopener noreferrer" id="pramuka-img" class="flex flex-col items-center bg-white/95 backdrop-blur border border-amber-200 shadow-2xl rounded-2xl p-3 w-48 text-center hover:scale-105 transition-transform">
-                <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-amber-500 mb-2 shadow-inner bg-amber-50">
+            <a href="https://ibb.co/7FVTLVy" target="_blank" rel="noopener noreferrer" id="pramuka-img" class="flex flex-col items-center bg-white/95 backdrop-blur border border-amber-200 shadow-2xl rounded-2xl p-3 w-48 text-center hover:shadow-amber-500/20">
+                <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-amber-500 mb-2 shadow-inner bg-amber-50 pointer-events-none">
                     <img src="https://i.ibb.co/gCwXhwg/guru-pramuka.png" alt="Guru Pramuka SMPN 4" class="w-full h-full object-cover">
                 </div>
-                <span class="text-xs font-bold text-amber-900 block">Pramuka SMPN 4</span>
-                <span class="text-[10px] text-amber-700 font-medium block">Praja Muda Karana</span>
+                <span class="text-xs font-bold text-amber-900 block pointer-events-none">Pramuka SMPN 4</span>
+                <span class="text-[10px] text-amber-700 font-medium block pointer-events-none">Praja Muda Karana</span>
             </a>
         </div>
     </section>
@@ -995,13 +996,15 @@
             });
         }
 
-        // ANIMASI PRAMUKA FLOATING CARD
+        // ANIMASI PRAMUKA FLOATING CARD PERBAIKAN
         const heroSection = document.getElementById('hero');
         const pramukaImg = document.getElementById('pramuka-img');
 
         if (heroSection && pramukaImg) {
             let targetX = 0, targetY = 0;
             let currentX = 0, currentY = 0;
+            let targetRotateX = 0, targetRotateY = 0;
+            let currentRotateX = 0, currentRotateY = 0;
 
             window.addEventListener('mousemove', (e) => {
                 const rect = heroSection.getBoundingClientRect();
@@ -1018,19 +1021,27 @@
                     const deltaX = (e.clientX - centerX) / (rect.width / 2);
                     const deltaY = (e.clientY - centerY) / (rect.height / 2);
 
-                    targetX = deltaX * 20;
-                    targetY = deltaY * 15;
+                    targetX = deltaX * 25;
+                    targetY = deltaY * 20;
+
+                    targetRotateX = -deltaY * 12;
+                    targetRotateY = deltaX * 12;
                 } else {
                     targetX = 0;
                     targetY = 0;
+                    targetRotateX = 0;
+                    targetRotateY = 0;
                 }
             });
 
             function animatePramuka() {
+                // Interpolasi halus (LERP)
                 currentX += (targetX - currentX) * 0.08;
                 currentY += (targetY - currentY) * 0.08;
+                currentRotateX += (targetRotateX - currentRotateX) * 0.08;
+                currentRotateY += (targetRotateY - currentRotateY) * 0.08;
 
-                pramukaImg.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0px)`;
+                pramukaImg.style.transform = `perspective(1000px) translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0px) rotateX(${currentRotateX.toFixed(2)}deg) rotateY(${currentRotateY.toFixed(2)}deg)`;
 
                 requestAnimationFrame(animatePramuka);
             }
