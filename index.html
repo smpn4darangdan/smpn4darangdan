@@ -48,8 +48,6 @@
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
         #pramuka-img {
-            transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
-            transform-origin: bottom center;
             will-change: transform;
         }
     </style>
@@ -328,7 +326,6 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                
                 <!-- Guru 1 -->
                 <div class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 text-center group">
                     <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
@@ -482,7 +479,6 @@
                         <span class="inline-block px-3 py-1 bg-brand-50 text-brand-800 text-xs font-semibold rounded-full mt-2">Guru Matematika</span>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -870,29 +866,55 @@
             });
         }
 
-        // PERBAIKAN LOGIKA INTERAKSI MOUSE PRAMUKA (SMOOTH & CONTROLLED)
+        // OPTIMASI DAN PERBAIKAN ANIMASI PRAMUKA FLOATING CARD
         const heroSection = document.getElementById('hero');
         const pramukaImg = document.getElementById('pramuka-img');
 
         if (heroSection && pramukaImg) {
+            let targetX = 0, targetY = 0;
+            let currentX = 0, currentY = 0;
+            let isHovered = false;
+
             window.addEventListener('mousemove', (e) => {
                 const rect = heroSection.getBoundingClientRect();
 
-                if (e.clientY >= rect.top - 100 && e.clientY <= rect.bottom + 100) {
+                // Cek apakah kursor berada di dalam area Hero Section (X dan Y)
+                if (
+                    e.clientX >= rect.left && 
+                    e.clientX <= rect.right && 
+                    e.clientY >= rect.top && 
+                    e.clientY <= rect.bottom
+                ) {
+                    isHovered = true;
                     const centerX = rect.left + rect.width / 2;
                     const centerY = rect.top + rect.height / 2;
 
+                    // Hitung delta koordinat (-1 hingga +1)
                     const deltaX = (e.clientX - centerX) / (rect.width / 2);
                     const deltaY = (e.clientY - centerY) / (rect.height / 2);
 
-                    const moveX = Math.max(-15, Math.min(15, deltaX * 15));
-                    const moveY = Math.max(-10, Math.min(10, deltaY * 10));
-
-                    pramukaImg.style.transform = `translate3d(${moveX}px, ${moveY}px, 0px)`;
+                    // Tentukan max offset gerakan (maksimal 20px)
+                    targetX = deltaX * 20;
+                    targetY = deltaY * 15;
                 } else {
-                    pramukaImg.style.transform = `translate3d(0px, 0px, 0px)`;
+                    isHovered = false;
+                    targetX = 0;
+                    targetY = 0;
                 }
             });
+
+            // Smooth Animation Loop menggunakan Lerp (Linear Interpolation)
+            function animatePramuka() {
+                // Kecepatan lerp (0.08 untuk pergerakan yang sangat halus)
+                currentX += (targetX - currentX) * 0.08;
+                currentY += (targetY - currentY) * 0.08;
+
+                pramukaImg.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0px)`;
+
+                requestAnimationFrame(animatePramuka);
+            }
+
+            animatePramuka();
         }
 
         // DATA ARTIKEL MODAL
