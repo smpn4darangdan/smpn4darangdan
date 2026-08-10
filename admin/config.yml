@@ -1,0 +1,20 @@
+backend:
+  name: git-gateway
+  branch: main # Sesuaikan dengan nama branch kamu (di tempatmu sudah benar 'main')
+
+# Folder untuk menyimpan gambar yang di-upload admin/guru
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Formulir Input Berita
+collections:
+  - name: "berita"
+    label: "Berita Sekolah"
+    folder: "berita"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Judul Berita", name: "title", widget: "string" }
+      - { label: "Tanggal Publish", name: "date", widget: "datetime" }
+      - { label: "Gambar Utama", name: "thumbnail", widget: "image" }
+      - { label: "Isi Berita", name: "body", widget: "markdown" }
