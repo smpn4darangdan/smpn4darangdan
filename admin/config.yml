@@ -1,13 +1,13 @@
 backend:
   name: git-gateway
-  branch: main # Sesuaikan dengan nama branch kamu (di tempatmu sudah benar 'main')
+  branch: main
 
-# Folder untuk menyimpan gambar yang di-upload admin/guru
+# Folder untuk menyimpan semua file/gambar yang di-upload lewat CMS
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
-# Formulir Input Berita
 collections:
+  # 1. BERITA SEKOLAH
   - name: "berita"
     label: "Berita Sekolah"
     folder: "berita"
@@ -18,3 +18,99 @@ collections:
       - { label: "Tanggal Publish", name: "date", widget: "datetime" }
       - { label: "Gambar Utama", name: "thumbnail", widget: "image" }
       - { label: "Isi Berita", name: "body", widget: "markdown" }
+
+  # 2. PROFIL SEKOLAH (Sambutan, Visi Misi, Sejarah)
+  - name: "profil"
+    label: "Profil Sekolah"
+    files:
+      - label: "Halaman Profil Sekolah"
+        name: "profil_sekolah"
+        file: "content/profil.json"
+        fields:
+          - { label: "Nama Kepala Sekolah", name: "kepala_sekolah", widget: "string" }
+          - { label: "Foto Kepala Sekolah", name: "foto_kepala_sekolah", widget: "image", required: false }
+          - { label: "Sambutan Kepala Sekolah", name: "sambutan", widget: "markdown" }
+          - { label: "Sejarah Sekolah", name: "sejarah", widget: "markdown" }
+          - { label: "Visi Sekolah", name: "visi", widget: "text" }
+          - { label: "Misi Sekolah", name: "misi", widget: "list" }
+
+  # 3. INFORMASI PPDB (Pengumuman & Syarat Pendaftaran)
+  - name: "ppdb"
+    label: "Informasi PPDB"
+    files:
+      - label: "Pengaturan PPDB"
+        name: "info_ppdb"
+        file: "content/ppdb.json"
+        fields:
+          - { label: "Status PPDB Dibuka?", name: "is_open", widget: "boolean", default: true }
+          - { label: "Tahun Ajaran", name: "tahun_ajaran", widget: "string", default: "2026/2027" }
+          - { label: "Judul Pengumuman PPDB", name: "title", widget: "string" }
+          - { label: "Brosur / Banner PPDB", name: "banner", widget: "image", required: false }
+          - { label: "Link Formulir Pendaftaran Online", name: "link_pendaftaran", widget: "string", required: false }
+          - { label: "Syarat & Ketentuan Pendaftaran", name: "syarat", widget: "markdown" }
+
+  # 4. DATA GURU & TENDIK
+  - name: "guru"
+    label: "Data Guru & Tendik"
+    folder: "content/guru"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nama Lengkap & Gelar", name: "title", widget: "string" }
+      - { label: "Jabatan / Mata Pelajaran", name: "jabatan", widget: "string" }
+      - { label: "NIP", name: "nip", widget: "string", required: false }
+      - { label: "Foto Guru", name: "thumbnail", widget: "image", required: false }
+
+  # 5. GALERI KEGIATAN
+  - name: "galeri"
+    label: "Galeri Foto"
+    folder: "content/galeri"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Judul Kegiatan", name: "title", widget: "string" }
+      - { label: "Tanggal Kegiatan", name: "date", widget: "datetime" }
+      - { label: "Foto Kegiatan", name: "image", widget: "image" }
+      - { label: "Keterangan Singkat", name: "description", widget: "string", required: false }
+
+  # 6. FASILITAS SEKOLAH
+  - name: "fasilitas"
+    label: "Fasilitas Sekolah"
+    folder: "content/fasilitas"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nama Fasilitas", name: "title", widget: "string" }
+      - { label: "Foto Fasilitas", name: "image", widget: "image" }
+      - { label: "Deskripsi Fasilitas", name: "description", widget: "text" }
+
+  # 7. EKSTRAKURIKULER
+  - name: "ekstrakurikuler"
+    label: "Ekstrakurikuler"
+    folder: "content/ekstrakurikuler"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nama Ekstrakurikuler", name: "title", widget: "string" }
+      - { label: "Pembina / Pelatih", name: "pembina", widget: "string", required: false }
+      - { label: "Foto Kegiatan Ekstra", name: "image", widget: "image", required: false }
+      - { label: "Deskripsi Singkat", name: "description", widget: "text" }
+
+  # 8. PENGATURAN GENERAL (Logo, Alamat, Kontak, Sosmed)
+  - name: "settings"
+    label: "Pengaturan Utama Web"
+    files:
+      - label: "Logo & Identitas Sekolah"
+        name: "general_settings"
+        file: "content/settings.json"
+        fields:
+          - { label: "Nama Sekolah", name: "site_title", widget: "string", default: "SMPN 4 DARANGDAN" }
+          - { label: "Logo Sekolah", name: "logo", widget: "image" }
+          - { label: "Favicon / Icon Tab Browser", name: "favicon", widget: "image", required: false }
+          - { label: "Alamat Lengkap", name: "alamat", widget: "text" }
+          - { label: "Nomor Telepon / WhatsApp", name: "telepon", widget: "string" }
+          - { label: "Email Resmi Sekolah", name: "email", widget: "string" }
+          - { label: "Link Google Maps (Embed/URL)", name: "maps_url", widget: "string", required: false }
+          - { label: "Link Instagram", name: "instagram", widget: "string", required: false }
+          - { label: "Link Facebook", name: "facebook", widget: "string", required: false }
+          - { label: "Link Youtube", name: "youtube", widget: "string", required: false }
