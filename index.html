@@ -1,4 +1,97 @@
-<!DOCTYPE html>
+<!DOCTYPE1 html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Resmi - Kegiatan Terbaru</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. PENGUMUMAN TEKS BERJALAN (RUNNING TEXT) DI BAGIAN ATAS -->
+    <div class="top-announcement">
+        <div class="announcement-label">PENGUMUMAN</div>
+        <div class="ticker-wrapper">
+            <div class="ticker-text">
+                📢 Pendaftaran Kegiatan Bakti Sosial telah dibuka! | 📢 Jadwal Pemeliharaan Sistem: Sabtu, 15 Agustus 2026 pukul 20:00 WIB.
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR UTAMA -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">PortalKita</div>
+            <nav>
+                <a href="#">Beranda</a>
+                <a href="#kegiatan">Kegiatan</a>
+                <a href="#">Kontak</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 2. BAGIAN KEGIATAN TERBARU -->
+        <section id="kegiatan" class="kegiatan-section">
+            <h2 class="section-title">Kegiatan Terbaru</h2>
+            
+            <div class="kegiatan-grid">
+                
+                <!-- Kartu Kegiatan 1 -->
+                <article class="kegiatan-card">
+                    <img src="https://via.placeholder.com/400x250" alt="Kegiatan 1">
+                    <div class="card-content">
+                        <span class="category">Kegiatan</span>
+                        <!-- 3. LINK UNIK KE HALAMAN DETAIL ARTIKEL -->
+                        <h3><a href="detail-kegiatan.html?id=1" class="article-link">Pelatihan Kewirausahaan Pemuda 2026</a></h3>
+                        <p class="date">📅 10 Agustus 2026</p>
+                        <p class="summary">Kegiatan pelatihan ini ditujukan untuk meningkatkan keterampilan bisnis pemuda daerah...</p>
+                        
+                        <!-- TOMBOL BAGIKAN LINK -->
+                        <div class="card-action">
+                            <a href="detail-kegiatan.html?id=1" class="btn-read">Baca Selengkapnya</a>
+                            <button onclick="shareLink('https://domainkamu.com/detail-kegiatan.html?id=1')" class="btn-share">🔗 Bagikan</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Kartu Kegiatan 2 -->
+                <article class="kegiatan-card">
+                    <img src="https://via.placeholder.com/400x250" alt="Kegiatan 2">
+                    <div class="card-content">
+                        <span class="category">Kegiatan</span>
+                        <h3><a href="detail-kegiatan.html?id=2" class="article-link">Gotong Royong Bersihkan Lingkungan</a></h3>
+                        <p class="date">📅 08 Agustus 2026</p>
+                        <p class="summary">Aksi gotong royong massal yang melibatkan warga setempat dalam rangka menjaga kebersihan...</p>
+                        
+                        <div class="card-action">
+                            <a href="detail-kegiatan.html?id=2" class="btn-read">Baca Selengkapnya</a>
+                            <button onclick="shareLink('https://domainkamu.com/detail-kegiatan.html?id=2')" class="btn-share">🔗 Bagikan</button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- SCRIPT SEDERHANA UNTUK FITUR SHARE LINK -->
+    <script>
+        function shareLink(url) {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Kegiatan Terbaru',
+                    url: url
+                }).catch(console.error);
+            } else {
+                // Alternatif jika browser tidak mendukung Web Share API: Salin ke Clipboard
+                navigator.clipboard.writeText(url);
+                alert('Tautan artikel berhasil disalin: ' + url);
+            }
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
