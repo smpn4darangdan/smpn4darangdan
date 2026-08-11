@@ -1,6 +1,6 @@
 ---
-title: Ani Marlina, M.Pd
-jabatan: Guru B. Inggris
-nip: 19790319 201412 2 001
-thumbnail: https://i.ibb.co.com/kbhLm42/Whats-App-Image-2026-07-22-at-12-56-58.jpg
+title: Yoyos Rosyani, M.Pd
+jabatan: Guru B. Indonesia
+nip: 19890323 201903 2 002
+thumbnail: https://i.ibb.co.com/0R66X2Zh/Screenshot-1628.png
 ---
