@@ -2,9 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
-# Folder lokasi fisik penyimpanan gambar (diarahkan ke folder public)
 media_folder: "public/images/uploads"
-public_folder: "/images/uploads"
+public_folder: "/public/images/uploads"
 
 collections:
   # 1. BERITA SEKOLAH
